@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if test -r $1/server.sh; then
+    echo "-----> Simple shell responder app detected"
+    exit 0
+fi
+exit 1
