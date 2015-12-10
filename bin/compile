@@ -14,18 +14,5 @@ export_env_dir() {
     fi
 }
 
-prepare_java_opts() {
-    env_dir=$3
-    whitelist_regex=${2:-'voice\.recognition\..*'}
-    JAVA_OPTS="$JAVA_OPTS"
-    if [ -d "$env_dir" ]; then
-        for e in $(ls $env_dir | grep -E "$whitelist_regex"); do
-            JAVA_OPTS="$JAVA_OPTS -D${e}=$(cat $env_dir/$e)"
-        done
-    export JAVA_OPTS
-    fi
-}
-
 echo "-----> Exporting environmental variables from ENV_DIR"
 export_env_dir
-prepare_java_opts
